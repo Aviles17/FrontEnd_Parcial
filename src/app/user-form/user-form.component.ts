@@ -7,24 +7,27 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./user-form.component.css']
 })
 export class UserFormComponent {
-  titulo!: string;
-  referecncia!: string;
-  autor!: string;
-  precio!: number;
-  ubicacion!: String
+  title: string = '';
+  reference: string = '';
+  author: string = '';
+  price: number = 0.0;
+  location: string = '';
 
-  result: any;
+  constructor(private http: HttpClient) { }
 
-  constructor(private http: HttpClient) {
-  }
-
-  onSubmit() {
-    const data = {
-      titulo: this.titulo,
-      referecncia: this.referecncia,
-      autor: this.autor,
-      precio: this.precio,
-      ubicacion: this.ubicacion
+  submitForm() {
+    const book = {
+      title: this.title,
+      reference: this.reference,
+      author: this.author,
+      price: this.price,
+      location: this.location
     };
+
+    this.http.post(`http://localhost:8080/Add/Libro?titulo=${this.title}&referencia=${this.reference}&autor=${this.author}&precio=${this.price}&ubicacion=${this.location}`, book)
+      .subscribe(response => {
+        console.log(response);
+        // Handle the response or update the component's properties
+      });
   }
 }
