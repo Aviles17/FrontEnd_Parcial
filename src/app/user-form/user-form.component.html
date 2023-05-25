@@ -1,0 +1,21 @@
+<div>
+  <label for="username">Enter title:</label>
+  <input id="titulo" [(ngModel)]="titulo" placeholder="Username" />
+  <label for="username">Enter reference:</label>
+  <input id="referencia" [(ngModel)]="referecncia" placeholder="Username" />
+  <label for="username">Enter autor:</label>
+  <input id="autor" [(ngModel)]="autor" placeholder="Username" />
+  <label for="username">Enter precio:</label>
+  <input id="precio" [(ngModel)]="precio" placeholder="Username" />
+  <label for="username">Enter ubicacion:</label>
+  <input id="ubicacion" [(ngModel)]="ubicacion" placeholder="Username" />
+
+
+  <button (click)="onSubmit()">Submit</button>
+</div>
+<div *ngIf="result">
+  <h2>User Details:</h2>
+  <p>Username: {{ result.username }}</p>
+  <p>Email: {{ result.email }}</p>
+  <p>Location: {{ result.location }}</p>
+</div>
